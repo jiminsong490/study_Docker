@@ -1,7 +1,7 @@
-FROM ubuntu:latest
+FROM node:18.7.0
 
 WORKDIR /back
-COPY package*.json /back
+COPY package*.json ./
 
 RUN npm i
 COPY . ./
