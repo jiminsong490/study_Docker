@@ -1,0 +1,17 @@
+version: '3'
+services:
+    back:
+        build:
+            context: './back'
+        command: 'node index'
+        ports:
+            - 3010:3010
+        expose:
+            - 3010
+    front:
+        build:
+            context: './front'
+        command: ['npm', 'start']
+        ports:
+            - 3000:3000
+        tty: true
