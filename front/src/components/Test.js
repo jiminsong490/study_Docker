@@ -4,7 +4,7 @@ import axios from 'axios'
 const Test = () => {
     const [result, setResult] = useState('')
     const a = async () => {
-        const fds = await axios('http://localhost:3010', {})
+        const fds = await axios('http://54.180.126.1:3010', {})
         setResult(fds.data.text)
         console.log(fds.data.text)
     }
