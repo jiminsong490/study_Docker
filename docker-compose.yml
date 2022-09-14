@@ -25,3 +25,5 @@ services:
             - 'host.docker,internal:host-gateway'
         expose:
             - 80
+        depends_on:
+            - front
