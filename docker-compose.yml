@@ -1,15 +1,5 @@
 version: '3'
 services:
-    nginx:
-        build:
-            context: './nginx'
-        command: ['nginx', '-g', 'daemon off;']
-        ports:
-            - 80:80
-        extra_hosts:
-            - 'host.docker,internal:host-gateway'
-        expose:
-            - 80
     back:
         build:
             context: './back'
@@ -25,3 +15,13 @@ services:
         ports:
             - 3000:3000
         tty: true
+    nginx:
+        build:
+            context: './nginx'
+        command: ['nginx', '-g', 'daemon off;']
+        ports:
+            - 80:80
+        extra_hosts:
+            - 'host.docker,internal:host-gateway'
+        expose:
+            - 80
