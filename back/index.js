@@ -3,9 +3,9 @@ const app = express()
 const cors = require('cors')
 
 app.use(cors())
-app.use('/home/ubuntu/example', express.static('index.html'))
+app.use(express.static('public'))
 
-app.get('/', (req, res, next) => {
+app.get('/test', (req, res, next) => {
     res.send({ text: '안녕하세요~!!' })
 })
 
