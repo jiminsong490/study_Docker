@@ -18,10 +18,10 @@ services:
             - 3010:3010
         expose:
             - 3010
-    front:
-        build:
-            context: './front'
-        command: ['npm', 'start']
-        ports:
-            - 3000:3000
-        tty: true
+    # front:
+    #     build:
+    #         context: './front'
+    #     command: ['npm', 'start']
+    #     ports:
+    #         - 3000:3000
+    #     tty: true

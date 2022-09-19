@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 
 app.use(cors())
+app.use('/home/ubuntu/example', express.static('index.html'))
 
 app.get('/', (req, res, next) => {
     res.send({ text: '안녕하세요~!!' })
