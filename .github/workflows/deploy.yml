@@ -38,7 +38,7 @@ jobs:
 
             - name: copy
               run: |
-                  cp ./front/build ./test
+                  cp ../../front/build ./test
 
             # - name: build server files
             #   working-directory: ./
