@@ -26,22 +26,26 @@ jobs:
             - name: Check Npm -v
               run: npm -v
 
-            #  .env파일을 만들어야 한다면 주석 해제
-            # - name: create env file
-            #   working-directory: ./
-            #   run: |
-            #       pwd
-            #       touch .env
-            #       echo PORT=${{ secrets.PORT }} >> .env
-            #       echo MONGODB_URI=${{ secrets.MONGODB_URI }} >> .env
-            #       echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
-            #       echo JWT_ALGO=${{ secrets.JWT_ALGO }} >> .env
-            #       cat .env
-
-            - name: build server files
+            - name: create env file
               working-directory: ./
               run: |
-                  yarn
-                  yarn run build
+                  pwd
+                  touch .env
+
+            - name: make directory
+              run: |
+                  mkdir -p test
+
+            - name: copy
+              run: |
+                  cp ./front/build ./test
+
+            # - name: build server files
+            #   working-directory: ./
+            #   run: |
+            #       yarn
+            #       yarn run build
+            # - name: zip file
+            #   run: zip -r test.zip ./dist ./scripts ./appspec.yml ./.env ./package.json
 
 # test
