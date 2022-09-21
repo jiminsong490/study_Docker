@@ -48,6 +48,10 @@ jobs:
                       ${{ runner.OS }}-build-
                       ${{ runner.OS }}-
 
+            - name: ls
+              run: |
+                  ls -a
+
             - name: Install Dependencies
               run: npm install
 
@@ -57,11 +61,7 @@ jobs:
             - name: zip file
               run: zip -r test.zip ./build ./appspec.yml
 
-            - name: ls
-              run: |
-                  ls -a
             # - name: copy
             #   run: |
             #       cp ../../front/package.json ./test
-
 # test
