@@ -26,21 +26,36 @@ jobs:
             - name: Check Npm -v
               run: npm -v
 
+            - name: cd front
+              run: cd front
+
             - name: create env file
               working-directory: ./
               run: |
                   pwd
                   touch .env
 
-            # - name: build server files
-            #   working-directory: ./
+            # - name: make directory
             #   run: |
-            #       yarn
-            #       yarn run build
+            #       mkdir -p test
 
-            - name: make directory
-              run: |
-                  mkdir -p test
+            - name: Cache node modules
+              uses: actions/cache@v1
+              with:
+                  path: node_modules
+                  key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.OS }}-build-
+                      ${{ runner.OS }}-
+
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Build
+              run: npm run build
+
+            - name: zip file
+              run: zip -r test.zip ./build ./appspec.yml
 
             - name: ls
               run: |
@@ -48,8 +63,5 @@ jobs:
             # - name: copy
             #   run: |
             #       cp ../../front/package.json ./test
-
-            # - name: zip file
-            #   run: zip -r test.zip ./dist ./scripts ./appspec.yml ./.env ./package.json
 
 # test
